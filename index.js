@@ -13,6 +13,17 @@ server.on('connection', function(socket) {
     // The server can also receive data from the client by reading from its socket.
     socket.on('data', function(chunk) {
         console.log(`Data received from tracker: ${chunk.toString()}.`);
+        console.log(`Size : ${chunk.readIntBE(0, 2)}`);
+        console.log(`IMEI : ${chunk.readIntBE(2, 8)}`);
+        console.log(`CommandId : ${chunk.readIntBE(10, 1)}`);
+        console.log(`Records left : ${chunk.readIntBE(11, 1)}`);
+        const count = chunk.readIntBE(12, 1);
+        console.log(`Records count : ${count}`);
+        /*for (let i = 0; i < count; i++) {
+            ${chunk.readIntBE(13, 8)}
+        }*/
+        //console.log(`Records count : ${chunk.readIntBE(2, 8)}`);
+
     });
 
     socket.on('end', function() {
