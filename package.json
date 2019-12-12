@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/megasyl/Tracker/issues"
   },
-  "homepage": "https://github.com/megasyl/Tracker#readme"
+  "homepage": "https://github.com/megasyl/Tracker#readme",
+  "dependencies": {
+    "crc16": "^1.0.1"
+  }
 }
