@@ -1,5 +1,5 @@
 const Net = require('net');
-const crc16 = require('crc16');
+const crc = require('crc');
 const port = 9000;
 
 const server = new Net.createServer();
@@ -64,7 +64,7 @@ server.on('connection', function (socket) {
         response.writeIntBE(2, 0, 2);
         response.writeIntBE(100, 2, 1);
         response.writeIntBE(1, 3, 1);
-        response.writeIntBE(crc16(chunk), 3, 2);
+        response.writeIntBE(crc.crc16kermit(chunk), 3, 2);
         socket.write(response, () => {
             console.log('response sent : ', response);
         })

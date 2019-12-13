@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/megasyl/Tracker#readme",
   "dependencies": {
+    "crc": "^3.8.0",
     "crc16": "^1.0.1"
   }
 }
