@@ -64,7 +64,7 @@ server.on('connection', function (socket) {
         response.writeIntBE(2, 0, 2);
         response.writeIntBE(100, 2, 1);
         response.writeIntBE(1, 3, 1);
-        response.writeIntBE(crc.crc16kermit(chunk), 3, 2);
+        response.writeIntBE(crc.crc16kermit(chunk), 4, 2);
         socket.write(response, () => {
             console.log('response sent : ', response);
         })
