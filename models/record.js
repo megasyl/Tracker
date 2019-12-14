@@ -20,5 +20,9 @@ module.exports = mongoose.model('Record', new mongoose.Schema({
     speed: Number,
     hdop: Number,
     event_id: Number,
+    ignition: {
+        type: Boolean,
+        index: true,
+    },
     io: [Mixed],
 }));
