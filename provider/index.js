@@ -4,12 +4,20 @@ class Provider {
         try {
             const promises = data
                 .map(recordData => new Record(recordData).save())
-            const result = await Promise.all(promises);
-            console.log(result);
-            return result;
+            return Promise.all(promises);
         } catch (e) {
             console.log("err", e);
         }
+    }
+
+    async find(options) {
+        let result;
+        try {
+            result = await Record.find(options);
+        } catch (err) {
+            logger.error(new Error(`${MONGO_FIND_FAILED} ${this.db} ${err}`));
+        }
+        return result;
     }
 }
 

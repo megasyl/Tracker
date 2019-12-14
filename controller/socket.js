@@ -1,7 +1,7 @@
 const Provider = require('../provider');
 const hydrator = require('../hydrator');
 const ruptelaParser = require('ruptela');
-class Controller {
+class SocketController {
     constructor(socket) {
         this.socket = socket;
     }
@@ -27,4 +27,4 @@ class Controller {
     }
 }
 
-module.exports = Controller;
+module.exports = SocketController;
