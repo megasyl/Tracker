@@ -10,7 +10,7 @@ class Provider {
         }
     }
 
-    async find(options) {
+    static async find(options) {
         let result;
         try {
             result = await Record.find(options);
