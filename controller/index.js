@@ -9,7 +9,7 @@ class Controller {
     async onRecieveData(data) {
         try {
             console.log('hex data : ', data);
-            const {data: packet} = ruptelaParser(data);
+            const {data: packet, ack} = ruptelaParser(data);
             console.log(packet.payload);
             const recordsData = hydrator(packet);
             await Provider.bulkInsert(recordsData);
@@ -19,7 +19,7 @@ class Controller {
             }
             console.log('response: ', packet);
             console.log('response: ', packet.payload.records);
-            this.socket.write(packet.ack);
+            this.socket.write(ack);
         } catch (e) {
             console.log('ERROR: ', e);
         }
