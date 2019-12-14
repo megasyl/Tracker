@@ -7,7 +7,7 @@ server.on('connection', (socket) => {
     const controller = new Controller(socket);
     console.log('New connection from %s', addr);
 
-    socket.on('data', controller.onRecieveData);
+    socket.on('data', (data) => controller.onRecieveData(data));
 
     socket.once('close', () => {
         console.log('Connection from %s closed', addr);

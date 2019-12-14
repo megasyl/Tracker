@@ -5,7 +5,7 @@ const config = {
     user: process.env.MONGO_USER,
     password: process.env.MONGO_PASSWORD,
 };
-const url = `mongodb://${config.host}:${config.port}`;
+const url = `mongodb://${config.user}:${config.password}@${config.host}:${config.port}`;
 module.exports = mongoose.connect(`${url}/ruptela`, {
     user: config.user,
     password: config.password,

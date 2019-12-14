@@ -10,6 +10,7 @@ class Controller {
         try {
             console.log('hex data : ', data);
             const {data: res} = ruptelaParser(data);
+            console.log(res.payload);
             const recordsData = hydrator(res);
             await Provider.bulkInsert(recordsData);
             if (res.error) {
@@ -18,7 +19,7 @@ class Controller {
             }
             console.log('response: ', res);
             console.log('response: ', res.payload.records);
-            socket.write(res.ack);
+            this.socket.write(res.ack);
         } catch (e) {
             console.log('ERROR: ', e);
         }
