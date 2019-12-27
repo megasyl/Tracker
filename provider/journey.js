@@ -7,7 +7,9 @@ class Journey {
         try {
             result = await JourneyModel.findOne({ imei, completed: false });
             if (!result) {
-                return new JourneyModel({ imei, beginTimestamp: timestamp, completed: false })
+                result = new JourneyModel({ imei, beginTimestamp: timestamp, completed: false });
+                await result.save();
+                return result;
             }
         } catch (err) {
             logger.error(new Error(`${MONGO_FIND_FAILED} ${this.db} ${err}`));
