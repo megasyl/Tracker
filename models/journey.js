@@ -6,7 +6,7 @@ module.exports = mongoose.model('Journey', new mongoose.Schema({
         type: Number,
         index: true,
     },
-    completeted: {
+    completed: {
         type: Boolean,
     },
     beginTimestamp: {
