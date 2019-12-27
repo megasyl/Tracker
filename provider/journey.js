@@ -12,7 +12,7 @@ class Journey {
                 return result;
             }
         } catch (err) {
-            logger.error(new Error(`${MONGO_FIND_FAILED} ${this.db} ${err}`));
+            console.log("err", e);
         }
         return result;
     }
@@ -23,7 +23,7 @@ class Journey {
         try {
             result = await JourneyModel.findOne({ imei, completed: false });
         } catch (err) {
-            logger.error(new Error(`${MONGO_FIND_FAILED} ${this.db} ${err}`));
+            console.log("err", e);
         }
         return result;
     }
@@ -33,7 +33,7 @@ class Journey {
         try {
             result = await Record.find(options);
         } catch (err) {
-            logger.error(new Error(`${MONGO_FIND_FAILED} ${this.db} ${err}`));
+            console.log("err", e);
         }
         return result;
     }

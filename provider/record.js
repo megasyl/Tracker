@@ -15,7 +15,7 @@ class Provider {
         try {
             result = await Record.find(options);
         } catch (err) {
-            logger.error(new Error(`${MONGO_FIND_FAILED} ${this.db} ${err}`));
+            console.log("err", e);
         }
         return result;
     }
