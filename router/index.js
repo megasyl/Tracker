@@ -1,9 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controller/express');
+const recordController = require('../controller/express/record');
+const journeyController = require('../controller/express/journey');
 
 router.get(
     '/v1/records',
-    controller.read
+    recordController.read
 );
+
+router.get(
+    '/v1/journeys',
+    journeyController.read
+);
+
 module.exports = router;

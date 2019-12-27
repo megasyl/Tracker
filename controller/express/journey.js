@@ -1,6 +1,6 @@
-const Provider = require('../provider');
+const Provider = require('../../provider/journey');
 
-class ExpressController {
+class Journey {
     static async read(req, res, next) {
         try {
             const { beginDate, endDate } = req.query;
@@ -18,4 +18,4 @@ class ExpressController {
     }
 }
 
-module.exports = ExpressController;
+module.exports = Journey;

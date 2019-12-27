@@ -1,4 +1,4 @@
-const Provider = require('../provider');
+const RecordProvider = require('../provider/record');
 const hydrator = require('../hydrator');
 const ruptelaParser = require('ruptela');
 class SocketController {
@@ -10,7 +10,7 @@ class SocketController {
         try {
             const {data: packet, ack} = ruptelaParser(data);
             const recordsData = hydrator(packet);
-            await Provider.bulkInsert(recordsData);
+            await RecordProvider.bulkInsert(recordsData);
             if (packet.error) {
                 console.log(packet.error);
                 return;

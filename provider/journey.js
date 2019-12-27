@@ -27,6 +27,16 @@ class Journey {
         }
         return result;
     }
+
+    static async find(options) {
+        let result;
+        try {
+            result = await Record.find(options);
+        } catch (err) {
+            logger.error(new Error(`${MONGO_FIND_FAILED} ${this.db} ${err}`));
+        }
+        return result;
+    }
 }
 
 module.exports = Journey;
