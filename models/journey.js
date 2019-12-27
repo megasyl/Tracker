@@ -9,11 +9,11 @@ module.exports = mongoose.model('Journey', new mongoose.Schema({
     completeted: {
         type: Boolean,
     },
-    begin_timestamp: {
+    beginTimestamp: {
         type: Date,
         index: true,
     },
-    end_timestamp: {
+    endTimestamp: {
         type: Date,
         index: true,
     },
