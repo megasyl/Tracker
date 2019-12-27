@@ -31,7 +31,7 @@ class Journey {
     static async find(options) {
         let result;
         try {
-            result = await Record.find(options);
+            result = await JourneyModel.find(options);
         } catch (err) {
             console.log("err", err);
         }
