@@ -16,6 +16,17 @@ class Journey {
         }
         return result;
     }
+
+    static async findLastByRecord(record) {
+        let result;
+        const {imei} = record;
+        try {
+            result = await JourneyModel.findOne({ imei, completed: false });
+        } catch (err) {
+            logger.error(new Error(`${MONGO_FIND_FAILED} ${this.db} ${err}`));
+        }
+        return result;
+    }
 }
 
 module.exports = Journey;
