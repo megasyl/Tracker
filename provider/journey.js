@@ -12,7 +12,7 @@ class Journey {
                 return result;
             }
         } catch (err) {
-            console.log("err", e);
+            console.log("err", err);
         }
         return result;
     }
@@ -23,7 +23,7 @@ class Journey {
         try {
             result = await JourneyModel.findOne({ imei, completed: false });
         } catch (err) {
-            console.log("err", e);
+            console.log("err", err);
         }
         return result;
     }
@@ -33,7 +33,7 @@ class Journey {
         try {
             result = await Record.find(options);
         } catch (err) {
-            console.log("err", e);
+            console.log("err", err);
         }
         return result;
     }

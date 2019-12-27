@@ -15,7 +15,7 @@ class Provider {
         try {
             result = await Record.find(options);
         } catch (err) {
-            console.log("err", e);
+            console.log("err", err);
         }
         return result;
     }
