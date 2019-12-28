@@ -28,7 +28,7 @@ class Record {
                 ];
                 const address = await GoogleServices.getAddressFromLocation(location);
                 entry.record.address = address ? address.results[0]['formatted_address'] : null;
-                return response;
+                return entry;
             }));
 
             res.status(200).send(response);

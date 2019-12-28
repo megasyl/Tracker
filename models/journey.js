@@ -26,6 +26,12 @@ module.exports = mongoose.model('Journey', new mongoose.Schema({
     distance: {
         type: Number
     },
+    maxSpeed: {
+        type: Number
+    },
+    averageSpeed: {
+        type: Number
+    },
     records: [Mixed],
     snappedPoints: [Mixed],
     interpolatedPoints: [Mixed],
