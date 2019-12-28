@@ -24,4 +24,6 @@ module.exports = mongoose.model('Journey', new mongoose.Schema({
         index: true,
     },
     records: [Mixed],
+    snappedPoints: [Mixed],
+    interpolatedPoints: [Mixed],
 }));
