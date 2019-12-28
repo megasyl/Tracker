@@ -15,7 +15,7 @@ class Google {
         try {
             const path = points.join('|');
             const url = 'https://roads.googleapis.com/v1/snapToRoads';
-            const {data} = await axios.get(`${Google.url}?path=${path}&interpolate=true&key=AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow`);
+            const {data} = await axios.get(`${url}?path=${path}&interpolate=true&key=AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow`);
             return data;
         } catch (e) {
             console.log("error", e)
