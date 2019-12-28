@@ -19,6 +19,20 @@ class Provider {
         }
         return result;
     }
+
+    static async findLastByIMEI() {
+        try {
+            const result = await Record.aggregate([
+                {$sort: { timestamp: -1 }},
+                {$group: { _id: "$imei",
+                        createdOn: {$first: "$timestamp"},
+                    }},
+            ])
+            return result;
+        } catch (e) {
+            console.log('err', e)
+        }
+    }
 }
 
 module.exports = Provider;

@@ -5,7 +5,12 @@ const journeyController = require('../controller/express/journey');
 
 router.get(
     '/v1/records',
-    recordController.read
+    recordController.list
+);
+
+router.get(
+    '/v1/records/last-by-imei',
+    recordController.lastByImei
 );
 
 router.get(
