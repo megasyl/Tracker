@@ -1,4 +1,5 @@
 const Provider = require('../../provider/record');
+const GoogleServices = require('../../services/google');
 
 class Record {
     static async list(req, res, next) {
@@ -21,6 +22,11 @@ class Record {
         try {
             const { beginDate, endDate } = req.query;
             const response = await Provider.findLastByIMEI();
+            const location = [
+                response.record.latitude,
+                response.record.longgitude
+            ];
+            response.record.address = await GoogleServices.getAddressFromLocation(location);
             res.status(200).send(response);
         } catch (e) {
             return next(e);
