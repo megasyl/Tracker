@@ -26,7 +26,8 @@ class Record {
                     entry.record.latitude,
                     entry.record.longitude
                 ];
-                entry.record.address = await GoogleServices.getAddressFromLocation(location);
+                const address = await GoogleServices.getAddressFromLocation(location);
+                entry.record.address = address ? address.results[0]['formatted_address'] : null;
                 return response;
             }));
 
