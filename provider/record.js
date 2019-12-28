@@ -25,9 +25,9 @@ class Provider {
             const result = await Record.aggregate([
                 {$sort: { timestamp: -1 }},
                 {$group: { _id: "$imei",
-                        createdOn: {$first: "$timestamp"},
+                        record: {$first : "$$ROOT"}
                     }},
-            ])
+            ]);
             return result;
         } catch (e) {
             console.log('err', e)
