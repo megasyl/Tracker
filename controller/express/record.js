@@ -21,11 +21,11 @@ class Record {
     static async lastByImei(req, res, next) {
         try {
             let response = await Provider.findLastByIMEI();
-            const location = [
-                response.record.latitude,
-                response.record.longgitude
-            ];
             response = await Promise.all(response.map(async entry => {
+                const location = [
+                    entry.record.latitude,
+                    entry.record.longitude
+                ];
                 entry.record.address = await GoogleServices.getAddressFromLocation(location);
                 return response;
             }));
