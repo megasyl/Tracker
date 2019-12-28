@@ -21,7 +21,7 @@ class Record {
     static async lastByImei(req, res, next) {
         try {
             let response = await Provider.findLastByIMEI();
-            response = response.map(async entry => {
+            response = await Promise.all(response.map(async entry => {
                 const location = [
                     entry.record.latitude,
                     entry.record.longitude
@@ -29,7 +29,7 @@ class Record {
                 const address = await GoogleServices.getAddressFromLocation(location);
                 entry.record.address = address ? address.results[0]['formatted_address'] : null;
                 return response;
-            });
+            }));
 
             res.status(200).send(response);
         } catch (e) {
