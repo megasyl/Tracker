@@ -9,6 +9,12 @@ module.exports = mongoose.model('Journey', new mongoose.Schema({
     completed: {
         type: Boolean,
     },
+    beginAddress: {
+        type: String,
+    },
+    endAddress: {
+        type: String,
+    },
     beginTimestamp: {
         type: Date,
         index: true,
