@@ -7,7 +7,7 @@ class Journey {
         try {
             result = await JourneyModel.findOne({ imei, completed: false });
             if (!result) {
-                result = new JourneyModel({ imei, beginTimestamp: timestamp, completed: false });
+                result = new JourneyModel({ imei, imeiString: parseInt(imei, 10), beginTimestamp: timestamp, completed: false });
                 await result.save();
                 return result;
             }

@@ -6,6 +6,9 @@ module.exports = mongoose.model('Journey', new mongoose.Schema({
         type: Number,
         index: true,
     },
+    imeiString: {
+        type: String,
+    },
     completed: {
         type: Boolean,
     },
@@ -17,7 +20,7 @@ module.exports = mongoose.model('Journey', new mongoose.Schema({
         index: true,
     },
     beginAddressZip: {
-        type: Number,
+        type: String,
         index: true,
     },
     beginAddressCity: {
@@ -36,7 +39,7 @@ module.exports = mongoose.model('Journey', new mongoose.Schema({
         index: true,
     },
     endAddressZip: {
-        type: Number,
+        type: String,
         index: true,
     },
     endAddressCity: {
