@@ -22,7 +22,7 @@ class Journey {
                 match.endAddressZip = regexNumber;
                 match.endAddressCity = regex;
                 match.endAddressCountry = regex;
-                match.imei = regexNumber;
+                match.imeiString = regexNumber;
             }
             const response = await Provider.find(match);
             res.status(200).send(response);
