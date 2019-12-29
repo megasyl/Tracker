@@ -13,15 +13,17 @@ class Journey {
             }
             if (search) {
                 const regex = { "$regex": search, "$options": "i" };
-                match.beginAddressRoad = regex;
-                match.beginAddressZip = regex;
-                match.beginAddressCity = regex;
-                match.beginAddressCountry = regex;
-                match.endAddressRoad = regex;
-                match.endAddressZip = regex;
-                match.endAddressCity = regex;
-                match.endAddressCountry = regex;
-                match.imeiString = regex;
+                match.$or = [
+                    { beginAddressRoad: regex },
+                    { beginAddressZip: regex },
+                    { beginAddressCity: regex },
+                    { beginAddressCountry: regex },
+                    { endAddressRoad: regex },
+                    { endAddressZip: regex },
+                    { endAddressCity: regex },
+                    { endAddressCountry: regex },
+                    { imeiString: regex },
+                ];
             }
             const response = await Provider.find(match);
             res.status(200).send(response);
