@@ -4,14 +4,27 @@ class Journey {
     static async read(req, res, next) {
         try {
             const { beginDate, endDate, search } = req.query;
-            const match = {
-                timestamp: {
+            const match = {};
+            if (beginDate && endDate) {
+                match.timestamp = {
                     $gte: new Date(beginDate),
                     $lte: new Date(endDate),
-                },
-            };
+                }
+            }
+            if (search) {
+                const regex = { "$regex": search, "$options": "i" };
+                match.beginAddressRoad = regex;
+                match.beginAddressZip = regex;
+                match.beginAddressCity = regex;
+                match.beginAddressCountry = regex;
+                match.endAddressRoad = regex;
+                match.endAddressZip = regex;
+                match.endAddressCity = regex;
+                match.endAddressCountry = regex;
+                match.imei = regex;
+            }
             console.log("searching for ", search)
-            const response = await Provider.find({beginAddressCity: { "$regex": search, "$options": "i" }});
+            const response = await Provider.find(match);
             res.status(200).send(response);
         } catch (e) {
             return next(e);
