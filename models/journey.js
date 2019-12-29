@@ -21,11 +21,11 @@ module.exports = mongoose.model('Journey', new mongoose.Schema({
         index: true,
     },
     beginAddressCity: {
-        type: Number,
+        type: String,
         index: true,
     },
     beginAddressCountry: {
-        type: Number,
+        type: String,
         index: true,
     },
     endAddress: {
@@ -40,11 +40,11 @@ module.exports = mongoose.model('Journey', new mongoose.Schema({
         index: true,
     },
     endAddressCity: {
-        type: Number,
+        type: String,
         index: true,
     },
     endAddressCountry: {
-        type: Number,
+        type: String,
         index: true,
     },
     beginTimestamp: {
