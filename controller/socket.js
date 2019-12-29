@@ -1,6 +1,8 @@
 const RecordProvider = require('../provider/record');
 const hydrator = require('../hydrator');
 const ruptelaParser = require('ruptela');
+const websocketServer = require('../server/websocket');
+const { broadcast } = require('../utils/websocket');
 class SocketController {
     constructor(socket) {
         this.socket = socket;
@@ -11,6 +13,7 @@ class SocketController {
             const {data: packet, ack} = ruptelaParser(data);
             const recordsData = hydrator(packet);
             await RecordProvider.bulkInsert(recordsData);
+            broadcast(websocketServer, recordsData[recordsData.length - 1]);
             if (packet.error) {
                 console.log(packet.error);
                 return;
