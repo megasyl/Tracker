@@ -4,7 +4,7 @@ class Journey {
     static async read(req, res, next) {
         try {
             const { beginDate, endDate, search } = req.query;
-            const match = {};
+            const match = { completed: true };
             if (beginDate && endDate) {
                 match.timestamp = {
                     $gte: new Date(beginDate),
