@@ -1,5 +1,5 @@
 const server = require('net').createServer();
-const Controller = require('../controller/socket/socket');
+const Controller = require('../controller/socket/index');
 
 server.on('connection', (socket) => {
     const addr = socket.remoteAddress + ':' + socket.remotePort;

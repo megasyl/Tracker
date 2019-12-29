@@ -1,7 +1,7 @@
 const JourneyProvider = require('../../provider/journey');
 const hydrator = require('../../hydrator/journey');
 class SocketJourneyController {
-    async static processRecords(records) {
+    static async processRecords(records) {
         try {
             for (const i in records) {
                 const record = records[i];
