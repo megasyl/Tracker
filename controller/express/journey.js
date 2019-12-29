@@ -10,7 +10,8 @@ class Journey {
                     $lte: new Date(endDate),
                 },
             };
-            const response = await Provider.find({beginAddressCity: new RegExp(search, 'i')});
+            console.log("searching for ", search)
+            const response = await Provider.find({beginAddressCity: { "$regex": search, "$options": "i" }});
             res.status(200).send(response);
         } catch (e) {
             return next(e);
