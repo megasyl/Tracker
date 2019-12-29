@@ -13,16 +13,15 @@ class Journey {
             }
             if (search) {
                 const regex = { "$regex": search, "$options": "i" };
-                const regexNumber = { "$regex": parseInt(search,10), "$options": "i" };
                 match.beginAddressRoad = regex;
-                match.beginAddressZip = regexNumber;
+                match.beginAddressZip = regex;
                 match.beginAddressCity = regex;
                 match.beginAddressCountry = regex;
                 match.endAddressRoad = regex;
-                match.endAddressZip = regexNumber;
+                match.endAddressZip = regex;
                 match.endAddressCity = regex;
                 match.endAddressCountry = regex;
-                match.imeiString = regexNumber;
+                match.imeiString = regex;
             }
             const response = await Provider.find(match);
             res.status(200).send(response);
