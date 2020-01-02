@@ -17,8 +17,8 @@ class Google {
         try {
             let baseUrl = 'https://maps.googleapis.com/maps/api/directions/json';
             const params = {
-                origin: locations.shift(),
-                destination: locations.pop(),
+                origin: locations.shift().toString(),
+                destination: locations.pop().toString(),
                 waypoints: locations.join('|'),
                 interpolate: true,
                 key: 'AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow'
