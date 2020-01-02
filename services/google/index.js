@@ -27,8 +27,7 @@ class Google {
             const {data} = await axios.get(url);
 
             const route = data.routes.shift();
-
-            return polylineDecoder(route.overview_polyline.points);
+            return route ? polylineDecoder(route.overview_polyline.points) : [];
         } catch (e) {
             console.log("error", e)
         }
