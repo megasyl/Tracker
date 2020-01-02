@@ -1,5 +1,7 @@
 const axios = require('axios');
+const polylineDecoder = require('decode-google-map-polyline');
 const arrayChunk = require('../../utils/arrayChunk');
+const qs = require('qs');
 class Google {
     static async getAddressFromLocation(location) {
         try {
@@ -11,10 +13,29 @@ class Google {
         }
     }
 
+    static async findPlausiblePathFromLocations(locations) {
+        try {
+            let baseUrl = 'https://maps.googleapis.com/maps/api/directions/json';
+            const params = {
+                origin: locations.shift(),
+                destination: locations.pop(),
+                waypoints: locations.join('|'),
+                interpolate: true,
+                key: 'AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow'
+            };
+            const url = `${baseUrl}?${ qs.stringify(params)}`;
+            const {data} = await axios.get(url);
+
+            return polylineDecoder(data);
+        } catch (e) {
+            console.log("error", e)
+        }
+    }
+
     static async snapPointsToClosestRoads(points) {
         try {
             const url = 'https://roads.googleapis.com/v1/snapToRoads';
-            if (points.length > 100) {
+            if (points.length >= 100) {
                 const promises = arrayChunk(points, 100).map(chunk => {
                     console.log(chunk)
                     const path = chunk.join('|');
