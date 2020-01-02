@@ -13,7 +13,7 @@ class Google {
         }
     }
 
-    static async findPlausiblePathFromLocations(locations) {
+    static async findPlausibleRouteFromLocations(locations) {
         try {
             let baseUrl = 'https://maps.googleapis.com/maps/api/directions/json';
             const params = {
@@ -26,7 +26,9 @@ class Google {
             const url = `${baseUrl}?${ qs.stringify(params)}`;
             const {data} = await axios.get(url);
 
-            return polylineDecoder(data);
+            const route = data.routes.shift();
+
+            return polylineDecoder(route.overview_polyline.points);
         } catch (e) {
             console.log("error", e)
         }
