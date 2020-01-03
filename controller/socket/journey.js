@@ -10,7 +10,7 @@ class SocketJourneyController {
                     let journey = await JourneyProvider.findLastByRecord(record);
                     if (journey && journey.records.length) {
                         journey = await hydrator(journey, record);
-                        await journey.save();
+                        if (journey) await journey.save();
                     }
                     continue;
                 }

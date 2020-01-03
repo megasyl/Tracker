@@ -40,7 +40,7 @@ class Google {
                 const promises = arrayChunk(points, 100).map(chunk => {
                     console.log(chunk)
                     const path = chunk.join('|');
-                    return axios.get(`${url}?path=${path}&interpolate=true&key=AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow`);
+                    return axios.get(`${url}?path=${path}&interpolate=false&key=AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow`);
                 });
                 const responses = await Promise.all(promises);
                 return responses.reduce((acc, cur, i) => {
@@ -51,7 +51,7 @@ class Google {
                 }, { snappedPoints: [] });
             }
             const path = points.join('|');
-            const {data} = await axios.get(`${url}?path=${path}&interpolate=true&key=AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow`);
+            const {data} = await axios.get(`${url}?path=${path}&interpolate=false&key=AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow`);
             return data;
         } catch (e) {
             console.log("error", e)
