@@ -14,10 +14,14 @@ if (!config.dbName || !config.user || !config.host || !config.port) {
     throw new Error('Missing variables for MySQL');
 }
 
-module.exports = new Sequelize(config.dbName, config.user, config.password, {
+const sequelize = new Sequelize(config.dbName, config.user, config.password, {
     host: config.host,
     port: config.port,
     dialect: 'mysql',
     define: { timestamps: false },
     logging: process.env.SEQUELIZE_DEBUG === 'true',
 });
+
+sequelize.sync();
+
+module.exports = sequelize;
