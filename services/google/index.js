@@ -32,7 +32,7 @@ class Google {
                     const route = data.routes.shift();
                     return route ? polylineDecoder(route.overview_polyline.points) : [];
                 });
-                return await Promise.all(promises);
+                return await Promise.all(promises).flat();
             }
             const params = {
                 origin: locations.shift().toString(),
