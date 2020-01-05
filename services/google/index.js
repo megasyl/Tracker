@@ -16,6 +16,23 @@ class Google {
     static async findPlausibleRouteFromLocations(locations) {
         try {
             let baseUrl = 'https://maps.googleapis.com/maps/api/directions/json';
+            if (locations.length > 27) {
+                const promises = arrayChunk(locations, 27).map(async chunk => {
+                    if (chunk.length === 1)
+                        return { lat: chunk[0][0], lng: chunk[0][1] };
+                    const params = {
+                        origin: chunk.shift().toString(),
+                        destination: chunk.pop().toString(),
+                        waypoints: chunk.join('|'),
+                        interpolate: true,
+                        key: 'AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow'
+                    };
+                    const url = `${baseUrl}?${ qs.stringify(params)}`;
+                    const route = data.routes.shift();
+                    return route ? polylineDecoder(route.overview_polyline.points) : [];
+                });
+                return await Promise.all(promises);
+            }
             const params = {
                 origin: locations.shift().toString(),
                 destination: locations.pop().toString(),
@@ -38,7 +55,6 @@ class Google {
             const url = 'https://roads.googleapis.com/v1/snapToRoads';
             if (points.length >= 100) {
                 const promises = arrayChunk(points, 100).map(chunk => {
-                    console.log(chunk)
                     const path = chunk.join('|');
                     return axios.get(`${url}?path=${path}&interpolate=false&key=AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow`);
                 });

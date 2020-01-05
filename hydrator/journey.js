@@ -1,8 +1,10 @@
 const GoogleService = require('../services/google');
 const { getDistance } = require('geolib');
 
-const findByType = (components, type) => components
-    .find(component => component.types.includes(type))['long_name'];
+const extractComponent = (components, type) => {
+    const component = components.find(component => component.types.includes(type));
+    return component ? component['long_name'] : null;
+};
 
 module.exports = async (journey, record) => {
     journey.records.push(record);
@@ -27,10 +29,6 @@ module.exports = async (journey, record) => {
         GoogleService.getAddressFromLocation([journey.records[0].latitude, journey.records[0].longitude]),
         GoogleService.getAddressFromLocation([record.latitude, record.longitude])
     ]);
-    const extractComponent = (components, type) => {
-        const component = components.find(component => component.types.includes(type));
-        return component ? component['long_name'] : null;
-    };
 
     if (beginAddress) {
         const components = beginAddress.results[0]['address_components'];
