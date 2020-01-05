@@ -1,3 +1,5 @@
+const Sequelize = require('sequelize');
+
 /**
  * @param {object} sequelize
  * @param {object} DataTypes
@@ -31,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             allowNull: true,
             field: 'updated_at',
-            defaultValue: Date.now()
+            defaultValue: Sequelize.fn('now')
         },
     }, {
         timestamps: false,
