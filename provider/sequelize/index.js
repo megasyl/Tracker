@@ -3,6 +3,24 @@ class SequelizeProvider {
         this.model = model;
     }
 
+    async findAll() {
+        try {
+            return this.model.findAll();
+        } catch (e) {
+            console.log(`cannot find all ${this.model.name}s : ${e}`)
+        }
+    }
+
+    async findById(id) {
+        try {
+            return this.model.findOne({
+                where: { id },
+            });
+        } catch (e) {
+            console.log(`cannot find all ${this.model.name}s : ${e}`)
+        }
+    }
+
     async create(data) {
         try {
             return this.model.create(data);

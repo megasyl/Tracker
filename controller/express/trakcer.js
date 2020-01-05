@@ -1,6 +1,6 @@
-const provider = require('../../provider/sequelize/vehicle');
+const provider = require('../../provider/sequelize/tracker');
 
-class Vehicle {
+class Tracker {
     static async list(req, res, next) {
         try {
             const results = await provider.findAll();
@@ -29,4 +29,4 @@ class Vehicle {
     }
 }
 
-module.exports = Vehicle;
+module.exports = Tracker;

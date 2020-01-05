@@ -7,4 +7,14 @@ router.post(
     vehicleController.create
 );
 
+router.get(
+    '/v1/vehicles',
+    vehicleController.list
+);
+
+router.get(
+    '/v1/vehicles/:id',
+    vehicleController.read
+);
+
 module.exports = router;
