@@ -5,6 +5,11 @@ const config = {
     user: process.env.MONGO_USER,
     password: process.env.MONGO_PASSWORD,
 };
+
+if (!config.host || !config.port) {
+    throw new Error('Missing variables for MongoDB');
+}
+
 const url = `mongodb://${config.host}:${config.port}`;
 module.exports = mongoose.connect(`${url}/ruptela`, {
     //user: config.user,

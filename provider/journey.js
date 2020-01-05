@@ -1,4 +1,4 @@
-const JourneyModel = require('../models/journey');
+const JourneyModel = require('../models/mongoose/journey');
 
 class Journey {
     static async findOrCreate(record) {
