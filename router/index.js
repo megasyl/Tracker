@@ -1,5 +1,5 @@
 const express = require('express');
-const fileService = require('../services');
+const fileService = require('../services/file');
 const globalRouter = express.Router();
 
 const routers = fileService.getFilesFromFolder(__dirname)

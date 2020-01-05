@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const journeyController = require('..//ntroller/express/journey');
+const journeyController = require('../controller/express/journey');
 
 router.get(
     '/v1/journeys',

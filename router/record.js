@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const recordController = require('../../controller/express/record');
+const recordController = require('../controller/express/record');
 
 router.get(
     '/v1/records',
