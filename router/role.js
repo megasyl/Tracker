@@ -4,7 +4,7 @@ const roleController = require('../controller/express/role');
 
 router.get(
     '/v1/roles',
-    roleController.readAll
+    roleController.list
 );
 
 module.exports = router;
