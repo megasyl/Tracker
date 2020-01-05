@@ -1,4 +1,4 @@
-const GoogleService = require('../services/google');
+const GoogleService = require('../services');
 const { getDistance } = require('geolib');
 
 const extractComponent = (components, type) => {

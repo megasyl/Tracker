@@ -1,5 +1,5 @@
 const Provider = require('../../provider/record');
-const GoogleServices = require('../../services/google');
+const GoogleServices = require('../../services');
 
 class Record {
     static async list(req, res, next) {

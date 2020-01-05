@@ -1,6 +1,6 @@
 const axios = require('axios');
 const polylineDecoder = require('decode-google-map-polyline');
-const arrayChunk = require('../../utils/arrayChunk');
+const arrayChunk = require('../utils/arrayChunk');
 const qs = require('qs');
 class Google {
     static async getAddressFromLocation(location) {

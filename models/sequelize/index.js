@@ -1,6 +1,6 @@
 const fs = require('fs');
 const sequelize = require('../../database/mysql');
-const fileService = require('../../services/file');
+const fileService = require('../../services');
 
 const path = `${process.cwd()}/models/sequelize`;
 

@@ -8,7 +8,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json({ limit: '1MB' }));
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(router);
 app.use((err, req, res, next) => {
     console.log('EXPRESS ERROR:', err);
