@@ -1,21 +1,12 @@
 const express = require('express');
-const router = express.Router();
-const recordController = require('../controller/express/record');
-const journeyController = require('../controller/express/journey');
+const fileService = require('../services/file');
+const globalRouter = express.Router();
 
-router.get(
-    '/v1/records',
-    recordController.list
-);
+const routers = fileService.getFilesFromFolder(__dirname)
+    .filter(v => v !== __filename)
+    .filter(v => v.indexOf('index.js') !== -1)
+    .map(router => require(router)); //eslint-disable-line
 
-router.get(
-    '/v1/records/last-by-imei',
-    recordController.lastByImei
-);
+routers.forEach(router => globalRouter.use(router));
 
-router.get(
-    '/v1/journeys',
-    journeyController.read
-);
-
-module.exports = router;
+module.exports = globalRouter;

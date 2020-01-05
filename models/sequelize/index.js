@@ -1,13 +1,10 @@
 const fs = require('fs');
 const sequelize = require('../../database/mysql');
+const fileService = require('../../services/file');
 
 const path = `${process.cwd()}/models/sequelize`;
-const files = fs.readdirSync(path).reduce((result, filename) => {
-    const dirPath = `${path}/${filename}`;
-    return [...result, dirPath];
-}, []);
 
-const models = files
+const models = fileService.getFilesFromFolder(path)
     .filter((file) => (!file.includes('/index.js')) && (file.slice(-3) === '.js'))
     .reduce((loadedModels, file) => {
         const model = sequelize.import(file);

@@ -1,6 +1,5 @@
 const Provider = require('../../provider/record');
 const GoogleServices = require('../../services/google');
-const models = require('../../models/sequelize');
 
 class Record {
     static async list(req, res, next) {

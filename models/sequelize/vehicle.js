@@ -4,7 +4,7 @@
  * @returns {object}
  */
 module.exports = (sequelize, DataTypes) => {
-    const model = sequelize.define('vehicule', {
+    const model = sequelize.define('vehicle', {
         id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
@@ -53,14 +53,14 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {
         timestamps: false,
-        tableName: 'vehicule',
+        tableName: 'vehicle',
     });
 
     model.associate = (models) => {
         const trackerModel = models.tracker;
         const userModel = models.user;
-        trackerModel.belongsTo(models.vehicule, { foreignKey: 'trackerId', targetKey: 'id' });
-        userModel.belongsTo(models.vehicule, { foreignKey: 'userId', targetKey: 'id' });
+        trackerModel.belongsTo(models.vehicle, { foreignKey: 'trackerId', targetKey: 'id' });
+        userModel.belongsTo(models.vehicle, { foreignKey: 'userId', targetKey: 'id' });
     };
 
     return model;
