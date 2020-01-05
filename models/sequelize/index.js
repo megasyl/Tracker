@@ -1,5 +1,5 @@
 const sequelize = require('../../database/mysql');
-const fileService = require('../../services');
+const fileService = require('../../services/file');
 
 const models = fileService.getFilesFromFolder(__dirname)
     .filter((file) => (!file.includes('/index.js')) && (file.slice(-3) === '.js'))
