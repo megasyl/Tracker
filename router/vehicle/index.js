@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const vehicleController = require('../../controller/express/vehicle');
 
-router.get(
+router.post(
     '/v1/vehicles',
     vehicleController.create
 );
