@@ -10,8 +10,9 @@ app.use(bodyParser.json({ limit: '1MB' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(router);
-app.use((err) => {
+app.use((err, req, res, next) => {
     console.log('EXPRESS ERROR:', err);
+    res.status(404).send('route not found')
 });
 
 app.listen(8080, () => {

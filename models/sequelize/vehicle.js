@@ -33,12 +33,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         trackerId: {
             type: DataTypes.INTEGER(11),
-            allowNull: false,
+            allowNull: true,
             field: 'tracker_id',
         },
         userId: {
             type: DataTypes.INTEGER(11),
-            allowNull: false,
+            allowNull: true,
             field: 'user_id',
         },
         createdAt: {
