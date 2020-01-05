@@ -14,4 +14,4 @@ Object.keys(models).forEach((modelName) => {
     }
 });
 
-return models;
+module.exports = models;
