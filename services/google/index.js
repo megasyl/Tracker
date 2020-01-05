@@ -28,6 +28,7 @@ class Google {
                         key: 'AIzaSyCxuVAmsmw5_r1iscWKdJMP1T7CHMG77Ow'
                     };
                     const url = `${baseUrl}?${ qs.stringify(params)}`;
+                    const {data} = await axios.get(url);
                     const route = data.routes.shift();
                     return route ? polylineDecoder(route.overview_polyline.points) : [];
                 });
