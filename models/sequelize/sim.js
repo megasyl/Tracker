@@ -33,7 +33,9 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'sim',
     });
 
-    model.associate = () => { };
+    model.associate = ({ sim, tracker }) => {
+        sim.belongsTo(tracker, { foreignKey: 'sim_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
+    };
 
     return model;
 };

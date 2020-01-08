@@ -45,8 +45,8 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'tracker',
     });
 
-    model.associate = ({sim, tracker}) => {
-        tracker.hasOne(sim, { onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    model.associate = ({tracker, vehicle}) => {
+        tracker.hasOne(vehicle, { foreignKey: 'tracker_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
     };
 
     return model;

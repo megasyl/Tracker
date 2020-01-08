@@ -21,7 +21,9 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'role',
     });
 
-    model.associate = () => {};
+    model.associate = ({role, user}) => {
+        role.belongsTo(user, { foreignKey: 'role_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
+    };
 
     return model;
 };

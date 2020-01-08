@@ -76,9 +76,7 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'user',
     });
 
-    model.associate = ({role, user}) => {
-        user.hasOne(role, { onDelete: 'SET NULL', onUpdate: 'CASCADE' });
-    };
+    model.associate = () => { };
 
     return model;
 };
