@@ -66,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
 
     model.associate = ({vehicle, tracker, client}) => {
         vehicle.hasMany(tracker, { foreignKey: 'vehicle_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
-        vehicle.belongsTo(client, { foreignKey: 'client_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
+        vehicle.belongsTo(client, { foreignKey: 'client_id', targetKey: 'id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
     };
 
     return model;
