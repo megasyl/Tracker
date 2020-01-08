@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
         clientId: {
             type: DataTypes.INTEGER(11),
             allowNull: true,
-            field: 'client',
+            field: 'client_id',
         },
         createdAt: {
             type: DataTypes.DATE,
