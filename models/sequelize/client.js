@@ -51,15 +51,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         vatMode: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         sendMode: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         rum: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         createdAt: {
             type: DataTypes.DATE,
