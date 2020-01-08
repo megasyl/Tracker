@@ -1,4 +1,4 @@
-const JourneyProvider = require('../../provider/journey');
+const JourneyProvider = require('../../provider/mongoose/journey');
 const hydrator = require('../../hydrator/journey');
 class SocketJourneyController {
     static async processRecords(records) {

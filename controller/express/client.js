@@ -1,4 +1,4 @@
-const provider = require('../../provider/sequelize/user');
+const provider = require('../../provider/sequelize/client');
 
 class User {
     static async list(req, res, next) {

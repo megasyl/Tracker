@@ -1,4 +1,4 @@
-const Record = require('../models/mongoose/record');
+const Record = require('../../models/mongoose/record');
 class Provider {
     static async bulkInsert(data) {
         try {

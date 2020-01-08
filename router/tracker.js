@@ -17,4 +17,14 @@ router.get(
     trackerController.read
 );
 
+router.put(
+    '/v1/trackers/:id',
+    trackerController.update
+);
+
+router.delete(
+    '/v1/trackers/:id',
+    trackerController.delete
+);
+
 module.exports = router;

@@ -27,6 +27,27 @@ class Tracker {
             return next(e);
         }
     }
+
+    static async update(req, res, next) {
+        try {
+            const { id } = req.query;
+            const { body } = req;
+            await provider.update(id, body);
+            res.status(204).send();
+        } catch (e) {
+            return next(e);
+        }
+    }
+
+    static async delete(req, res, next) {
+        try {
+            const { id } = req.query;
+            await provider.delete(id);
+            res.status(204).send();
+        } catch (e) {
+            return next(e);
+        }
+    }
 }
 
 module.exports = Tracker;

@@ -43,6 +43,18 @@ class SequelizeProvider {
             console.log(`cannot update ${this.model.name} with id ${id} : ${e}`)
         }
     }
+
+    async delete(id) {
+        try {
+            await this.model.update({ deleted: true }, {
+                where: {
+                    id,
+                },
+            });
+        } catch (e) {
+            console.log(`cannot update ${this.model.name} with id ${id} : ${e}`)
+        }
+    }
 }
 
 module.exports = SequelizeProvider;

@@ -1,4 +1,4 @@
-const Provider = require('../../provider/journey');
+const Provider = require('../../provider/mongoose/journey');
 
 class Journey {
     static async read(req, res, next) {

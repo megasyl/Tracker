@@ -17,4 +17,14 @@ router.get(
     vehicleController.read
 );
 
+router.put(
+    '/v1/vehicles/:id',
+    vehicleController.update
+);
+
+router.delete(
+    '/v1/users/:id',
+    vehicleController.delete
+);
+
 module.exports = router;

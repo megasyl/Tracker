@@ -17,4 +17,14 @@ router.get(
     userController.read
 );
 
+router.put(
+    '/v1/users/:id',
+    userController.update
+);
+
+router.delete(
+    '/v1/users/:id',
+    userController.delete
+);
+
 module.exports = router;

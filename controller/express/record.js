@@ -1,4 +1,4 @@
-const Provider = require('../../provider/record');
+const Provider = require('../../provider/mongoose/record');
 const GoogleServices = require('../../services/google');
 
 class Record {

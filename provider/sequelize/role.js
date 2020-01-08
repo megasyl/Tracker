@@ -1,7 +1,6 @@
-const SequelizeProvider = require('./index');
+const SequelizeProvider = require('./abstract');
 const { role } = require('../../models/sequelize');
 
-class RoleProvider extends SequelizeProvider {
-}
+class RoleProvider extends SequelizeProvider { }
 
 module.exports = new RoleProvider(role);

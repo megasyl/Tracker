@@ -1,4 +1,4 @@
-const RecordProvider = require('../../provider/record');
+const RecordProvider = require('../../provider/mongoose/record');
 const hydrator = require('../../hydrator/record');
 const ruptelaParser = require('ruptela');
 const websocketServer = require('../../server/websocket');
