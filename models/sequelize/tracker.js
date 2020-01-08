@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
             field: 'deleted',
             defaultValue: false,
         },
-        trackerId: {
+        simId: {
             type: DataTypes.INTEGER(11),
             allowNull: true,
             field: 'sim_id',
