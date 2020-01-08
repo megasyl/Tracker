@@ -79,7 +79,7 @@ module.exports = (sequelize, DataTypes) => {
 
     model.associate = ({client, user, vehicle}) => {
         client.hasMany(user, { foreignKey: 'client_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
-        client.hasMany(vehicle, { foreignKey: 'vehicle_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
+        client.hasMany(vehicle, { foreignKey: 'client_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
     };
 
     return model;
