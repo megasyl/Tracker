@@ -77,9 +77,7 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'client',
     });
 
-    model.associate = ({client, vehicle}) => {
-        client.hasMany(vehicle, { as: 'vehicles', foreignKey: 'client_id', sourceKey: 'id' });
-    };
+    model.associate = () => {};
 
     return model;
 };
