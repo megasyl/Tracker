@@ -24,6 +24,13 @@ module.exports = (sequelize, DataTypes) => {
             field: 'deleted',
             defaultValue: false,
         },
+        trackerId: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            field: 'sim_id',
+            references: 'sim',
+            referencesKey: 'id'
+        },
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -40,8 +47,8 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'tracker',
     });
 
-    model.associate = ({sim, vehicle}) => {
-        sim.belongsTo(vehicle, { foreignKey: 'trackerId', targetKey: 'id' });
+    model.associate = ({sim, tracker}) => {
+        tracker.belongsTo(sim, { foreignKey: 'simId', targetKey: 'id' });
     };
 
     return model;

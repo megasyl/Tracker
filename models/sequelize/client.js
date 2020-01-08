@@ -77,7 +77,7 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'client',
     });
 
-    model.associate = () => {};
+    model.associate = () => { };
 
     return model;
 };

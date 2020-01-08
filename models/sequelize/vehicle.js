@@ -47,11 +47,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(11),
             allowNull: true,
             field: 'tracker_id',
+            references: 'tracker',
+            referencesKey: 'id'
         },
         clientId: {
             type: DataTypes.INTEGER(11),
             allowNull: true,
             field: 'user_id',
+            references: 'tracker',
+            referencesKey: 'id'
         },
         createdAt: {
             type: DataTypes.DATE,

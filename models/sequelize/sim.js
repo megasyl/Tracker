@@ -22,11 +22,6 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             field: 'phone_number'
         },
-        trackerId: {
-            type: DataTypes.INTEGER(11),
-            allowNull: true,
-            field: 'tracker_id'
-        },
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -38,9 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'sim',
     });
 
-    model.associate = ({sim, vehicle}) => {
-        sim.belongsTo(vehicle, { foreignKey: 'trackerId', targetKey: 'id' });
-    };
+    model.associate = () => { };
 
     return model;
 };
