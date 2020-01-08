@@ -42,15 +42,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(11),
             allowNull: false,
             field: 'role_id',
-            references: 'role',
-            referencesKey: 'id'
         },
         clientId: {
             type: DataTypes.INTEGER(11),
             allowNull: true,
             field: 'client_id',
-            references: 'client',
-            referencesKey: 'id'
         },
         deleted: {
             type: DataTypes.BOOLEAN,
@@ -80,9 +76,8 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'user',
     });
 
-    model.associate = ({role, user, client}) => {
-        role.belongsTo(user, { foreignKey: 'roleId', targetKey: 'id' });
-        client.belongsTo(user, { foreignKey: 'clientId', targetKey: 'id' });
+    model.associate = ({role, user}) => {
+        user.hasOne(role);
     };
 
     return model;

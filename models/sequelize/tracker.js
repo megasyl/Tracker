@@ -28,8 +28,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(11),
             allowNull: true,
             field: 'sim_id',
-            references: 'sim',
-            referencesKey: 'id'
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -48,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     model.associate = ({sim, tracker}) => {
-        tracker.belongsTo(sim, { foreignKey: 'simId', targetKey: 'id' });
+        tracker.hasOne(sim)
     };
 
     return model;

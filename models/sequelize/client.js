@@ -77,7 +77,10 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'client',
     });
 
-    model.associate = () => { };
+    model.associate = ({client, user, vehicle}) => {
+        client.hasMany(user);
+        client.hasMany(vehicle);
+    };
 
     return model;
 };

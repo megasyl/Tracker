@@ -47,15 +47,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(11),
             allowNull: true,
             field: 'tracker_id',
-            references: 'tracker',
-            referencesKey: 'id'
         },
         clientId: {
             type: DataTypes.INTEGER(11),
             allowNull: true,
-            field: 'user_id',
-            references: 'tracker',
-            referencesKey: 'id'
+            field: 'client',
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -73,9 +69,8 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'vehicle',
     });
 
-    model.associate = ({tracker, client, vehicle}) => {
-        tracker.belongsTo(vehicle, { foreignKey: 'trackerId', targetKey: 'id' });
-        client.belongsTo(vehicle, { foreignKey: 'clientId', targetKey: 'id' });
+    model.associate = ({tracker, vehicle}) => {
+        vehicle.hasOne(tracker);
     };
 
     return model;
