@@ -29,6 +29,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             field: 'sim_id',
         },
+        vehicleId: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            field: 'vehicle_id',
+        },
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -46,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     model.associate = ({tracker, sim}) => {
-        tracker.hasOne(sim, { foreignKey: 'sim_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
+        tracker.hasOne(sim, { foreignKey: 'sim_id', targetKey: 'id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
     };
 
     return model;

@@ -43,11 +43,6 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             field: 'picture',
         },
-        trackerId: {
-            type: DataTypes.INTEGER(11),
-            allowNull: true,
-            field: 'tracker_id',
-        },
         clientId: {
             type: DataTypes.INTEGER(11),
             allowNull: true,
@@ -70,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     model.associate = ({vehicle, tracker, client}) => {
-        vehicle.hasOne(tracker, { foreignKey: 'tracker_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
+        vehicle.hasMany(tracker, { foreignKey: 'vehicle_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
         vehicle.belongsTo(client, { foreignKey: 'client_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
     };
 
