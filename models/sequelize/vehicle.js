@@ -28,6 +28,16 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             field: 'plate',
         },
+        kilometersAtInstall: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            field: 'kilometers_at_install',
+        },
+        kilometersAtUninstall: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            field: 'kilometers_at_uninstall',
+        },
         picture: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -38,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             field: 'tracker_id',
         },
-        userId: {
+        clientId: {
             type: DataTypes.INTEGER(11),
             allowNull: true,
             field: 'user_id',
@@ -59,11 +69,9 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'vehicle',
     });
 
-    model.associate = (models) => {
-        const trackerModel = models.tracker;
-        const userModel = models.user;
-        trackerModel.belongsTo(models.vehicle, { foreignKey: 'trackerId', targetKey: 'id' });
-        userModel.belongsTo(models.vehicle, { foreignKey: 'userId', targetKey: 'id' });
+    model.associate = ({tracker, client, vehicle}) => {
+        tracker.belongsTo(vehicle, { foreignKey: 'trackerId', targetKey: 'id' });
+        client.belongsTo(vehicle, { foreignKey: 'clientId', targetKey: 'id' });
     };
 
     return model;

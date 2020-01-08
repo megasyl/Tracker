@@ -6,54 +6,60 @@ const Sequelize = require('sequelize');
  * @returns {object}
  */
 module.exports = (sequelize, DataTypes) => {
-    const model = sequelize.define('user', {
+    const model = sequelize.define('client', {
         id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        firstName: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
-            field: 'first_name',
         },
-        lastName: {
+        idCompta: {
+            type: DataTypes.INTEGER(11),
+            allowNull: false,
+        },
+        siret: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        address: {
             type: DataTypes.STRING,
             allowNull: false,
-            field: 'last_name',
+        },
+        zipCode: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        city: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        country: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        phoneNumber: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            field: 'email',
         },
-        phoneNumber: {
+        vatMode: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        sendMode: {
             type: DataTypes.INTEGER,
-            allowNull: true,
-            field: 'phone_number',
-        },
-        password: {
-            type: DataTypes.STRING(36),
             allowNull: false,
-            field: 'password',
         },
-        roleId: {
-            type: DataTypes.INTEGER(11),
+        rum: {
+            type: DataTypes.INTEGER,
             allowNull: false,
-            field: 'role_id',
-        },
-        deleted: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            field: 'deleted',
-            defaultValue: false,
-        },
-        disabled: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            field: 'disabled',
-            defaultValue: false,
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -68,11 +74,11 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {
         timestamps: false,
-        tableName: 'user',
+        tableName: 'client',
     });
 
-    model.associate = ({role, user}) => {
-        role.belongsTo(user, { foreignKey: 'roleId', targetKey: 'id' });
+    model.associate = ({client, vehicle}) => {
+        client.hasMany(vehicle, { as: 'vehicles', foreignKey: 'client_id', sourceKey: 'id' });
     };
 
     return model;

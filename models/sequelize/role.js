@@ -21,9 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'role',
     });
 
-    model.associate = (models) => {
-
-    };
+    model.associate = () => {};
 
     return model;
 };
