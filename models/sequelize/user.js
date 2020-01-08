@@ -77,7 +77,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     model.associate = ({role, user}) => {
-        user.hasOne(role);
+        user.hasOne(role, { onDelete: 'SET NULL', onUpdate: 'CASCADE' });
     };
 
     return model;

@@ -78,8 +78,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     model.associate = ({client, user, vehicle}) => {
-        client.hasMany(user);
-        client.hasMany(vehicle);
+        client.hasMany(user, { onDelete: 'SET NULL', onUpdate: 'CASCADE' });
+        client.hasMany(vehicle, { onDelete: 'SET NULL', onUpdate: 'CASCADE' });
     };
 
     return model;

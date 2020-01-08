@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     model.associate = ({sim, tracker}) => {
-        tracker.hasOne(sim)
+        tracker.hasOne(sim, { onDelete: 'SET NULL', onUpdate: 'CASCADE' })
     };
 
     return model;

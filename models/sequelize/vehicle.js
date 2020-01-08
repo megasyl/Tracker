@@ -70,7 +70,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     model.associate = ({tracker, vehicle}) => {
-        vehicle.hasOne(tracker);
+        vehicle.hasOne(tracker, { onDelete: 'SET NULL', onUpdate: 'CASCADE' });
     };
 
     return model;
