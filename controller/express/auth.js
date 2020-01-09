@@ -19,7 +19,6 @@ class Auth {
                 const data = user;
                 delete data.password;
                 const token = jwt.sign({
-                    exp: 60 * 15,
                     data
                 }, 'tygvuhbijnok,pl;jhuhbijno');
                 return res.status(200).send({ token });
