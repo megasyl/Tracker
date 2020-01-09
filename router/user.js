@@ -3,9 +3,11 @@ const router = express.Router();
 const userController = require('../controller/express/user');
 const authMiddleware = require('../middleware/auth');
 
+console.log(authMiddleware('admin'))
+
 router.post(
-    authMiddleware('ADMIN'),
     '/v1/users',
+    authMiddleware('ADMIN'),
     userController.create
 );
 
