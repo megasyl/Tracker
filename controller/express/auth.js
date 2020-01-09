@@ -21,7 +21,7 @@ class Auth {
                 const token = jwt.sign({
                     data
                 }, 'tygvuhbijnok,pl;jhuhbijno');
-                return res.status(200).send({ token });
+                return res.status(200).send({ token, user });
             }
             res.status(403).send("suce pute sépaca" );
         } catch (e) {

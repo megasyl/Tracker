@@ -6,9 +6,8 @@ class UserProvider extends SequelizeProvider {
         try {
             return this.model.findOne({
                 where: { login },
-                includes: [{
-                    model: role,
-                    as: 'role'
+                include: [{
+                    model: role
                 }]
             });
         } catch (e) {
