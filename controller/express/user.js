@@ -22,16 +22,13 @@ class User {
 
     static async create(req, res, next) {
         try {
-            bcrypt.hash(req.body.password, 10, async (err, hash) => {
-                const data = {
-                    ...req.body,
-                    password: hash
-                };
-                await provider.create(data);
-                res.status(201).send();
-            });
-
-
+            const hash = await bcrypt.hash(req.body.password, 10);
+            const data = {
+                ...req.body,
+                password: hash
+            };
+            await provider.create(data);
+            res.status(201).send();
         } catch (e) {
             return next(e);
         }
