@@ -20,8 +20,9 @@ class Auth {
                     exp: 60 * 15,
                     data
                 }, 'tygvuhbijnok,pl;jhuhbijno');
-                res.status(200).send({ token });
+                return res.status(200).send({ token });
             }
+            res.status(403).send("suce pute sépaca" );
         } catch (e) {
             return next(e);
         }
