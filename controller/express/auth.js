@@ -12,7 +12,9 @@ class Auth {
             if (!user) {
                 res.status(404).send("suce pute yapa");
             }
+            console.log(user);
             const match = await bcrypt.compare(password, user.password);
+            console.log(match);
             if (match) {
                 const data = user;
                 delete data.password;
