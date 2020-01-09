@@ -6,4 +6,5 @@ module.exports = (packet) => packet.payload.records.map(record => ({
     longitude: record.longitude / 10000000,
     angle: record.angle / 100,
     ignition: record.io['5'] === 1 || 0,
+    totalDistance: record.io['29'] === 1 || 0
 }));

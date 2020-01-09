@@ -1,4 +1,5 @@
 const provider = require('../../provider/sequelize/user');
+const bcrypt = require('bcrypt');
 
 class User {
     static async list(req, res, next) {
@@ -21,8 +22,16 @@ class User {
 
     static async create(req, res, next) {
         try {
-            await provider.create(req.body);
-            res.status(201).send();
+            bcrypt.hash(req.body.password, 10, async (err, hash) => {
+                const data = {
+                    ...req.body,
+                    password: hash
+                };
+                await provider.create(data);
+                res.status(201).send();
+            });
+
+
         } catch (e) {
             return next(e);
         }
