@@ -10,7 +10,7 @@ class Auth {
             const { login, password } = req.body;
             const user = await provider.findByLogin(login);
             if (!user) {
-                res.status(404).send("suce pute yapa");
+                res.status(403).send({error: "Forbidden"});
             }
             console.log(password, user.password);
             const match = await bcrypt.compare(password, user.password);
@@ -23,7 +23,7 @@ class Auth {
                 }, 'tygvuhbijnok,pl;jhuhbijno');
                 return res.status(200).send({ token, data });
             }
-            res.status(403).send("suce pute sépaca" );
+            res.status(403).send({error: "Forbidden"});
         } catch (e) {
             return next(e);
         }

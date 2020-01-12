@@ -9,5 +9,5 @@ module.exports = (role) => (req, res, next) => {
         req.user = data;
         return next();
     }
-    res.status(403).send('suce pute movétoken')
+    res.status(403).send({error: "Forbidden"})
 };
