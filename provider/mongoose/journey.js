@@ -52,8 +52,7 @@ class Journey {
                     { imeiString: regex },
                 ];
             }
-            //Article.find({}).sort({date: 'desc'}).exec(function(err, docs) { ... });
-            result = await JourneyModel.find({ match, sort: {beginTimestamp: -1}});
+            result = await JourneyModel.find({ match }).sort({beginTimestamp: 'desc'}).exec();
         } catch (err) {
             console.log("err", err);
         }
