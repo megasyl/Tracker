@@ -52,7 +52,7 @@ class Journey {
                     { imeiString: regex },
                 ];
             }
-            result = await JourneyModel.find({ match })
+            result = await JourneyModel.find(match)
                 .select({ "records": 0, "snappedPoints": 0, "interpolatedPoints": 0})
                 .sort({beginTimestamp: 'desc'})
                 .exec();
