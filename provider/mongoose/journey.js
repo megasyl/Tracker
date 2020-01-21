@@ -28,6 +28,17 @@ class Journey {
         return result;
     }
 
+    static async findLastById(id) {
+        let result;
+        try {
+            result = await JourneyModel.findOne({ _id: id });
+        } catch (err) {
+            console.log("err", err);
+        }
+        return result;
+    }
+
+
     static async find({ beginDate, endDate, search }) {
         let result;
         try {

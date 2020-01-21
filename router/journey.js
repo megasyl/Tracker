@@ -7,4 +7,9 @@ router.get(
     journeyController.list
 );
 
+router.get(
+    '/v1/journeys/:id',
+    journeyController.read
+);
+
 module.exports = router;

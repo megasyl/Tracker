@@ -11,6 +11,17 @@ class Journey {
             return next(e);
         }
     }
+
+    static async read(req, res, next) {
+        try {
+            const { id } = req.params;
+
+            const response = await Provider.findLastById(id);
+            res.status(200).send(response);
+        } catch (e) {
+            return next(e);
+        }
+    }
 }
 
 module.exports = Journey;
