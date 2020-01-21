@@ -28,10 +28,32 @@ class Journey {
         return result;
     }
 
-    static async find(options) {
+    static async find({ beginDate, endDate, search }) {
         let result;
         try {
-            result = await JourneyModel.find(options);
+            const match = { completed: true };
+            if (beginDate && endDate) {
+                match.timestamp = {
+                    $gte: new Date(beginDate),
+                    $lte: new Date(endDate),
+                }
+            }
+            if (search) {
+                const regex = { "$regex": search, "$options": "i" };
+                match.$or = [
+                    { beginAddressRoad: regex },
+                    { beginAddressZip: regex },
+                    { beginAddressCity: regex },
+                    { beginAddressCountry: regex },
+                    { endAddressRoad: regex },
+                    { endAddressZip: regex },
+                    { endAddressCity: regex },
+                    { endAddressCountry: regex },
+                    { imeiString: regex },
+                ];
+            }
+            //Article.find({}).sort({date: 'desc'}).exec(function(err, docs) { ... });
+            result = await JourneyModel.find({ match, sort: {date: -1}});
         } catch (err) {
             console.log("err", err);
         }

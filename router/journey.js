@@ -4,7 +4,7 @@ const journeyController = require('../controller/express/journey');
 
 router.get(
     '/v1/journeys',
-    journeyController.read
+    journeyController.list
 );
 
 module.exports = router;
