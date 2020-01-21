@@ -53,7 +53,7 @@ class Journey {
                 ];
             }
             //Article.find({}).sort({date: 'desc'}).exec(function(err, docs) { ... });
-            result = await JourneyModel.find({ match, sort: {date: -1}});
+            result = await JourneyModel.find({ match, sort: {beginTimestamp: -1}});
         } catch (err) {
             console.log("err", err);
         }
