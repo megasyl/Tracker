@@ -1,17 +1,21 @@
 const mongoose = require('mongoose');
-const { Mixed } = mongoose.Schema.Types;
 
 module.exports = mongoose.model('Record', new mongoose.Schema({
     imei: {
         type: Number,
         index: true,
     },
+    voltage: Number,
+    ibutton_code: Number,
     timestamp: {
         type: Date,
         index: true,
     },
-    timestamp_extension: Number,
-    priority: Boolean,
+    channel_id: Number,
+    din: {
+        type: Number,
+        index: true
+    },
     longitude: Number,
     latitude: Number,
     altitude: Number,
@@ -19,10 +23,12 @@ module.exports = mongoose.model('Record', new mongoose.Schema({
     satellites: Number,
     speed: Number,
     hdop: Number,
-    event_id: Number,
-    ignition: {
-        type: Boolean,
-        index: true,
+    event_id: {
+        type: Number,
+        index: true
     },
-    io: [Mixed],
+    acceleration_events: Number,
+    cornering_events: Number,
+    extreme_braking_events: Number,
+    harsh_braking_events: Number,
 }));

@@ -1,10 +1,20 @@
-module.exports = (packet) => packet.payload.records.map(record => ({
+module.exports = (data) => data.map(record => ({
     imei: parseInt(packet.imei),
-    ...record,
+    voltage: record['external.powersource.voltage'],
+    ibutton_code: record['ibutton.code'],
     timestamp: new Date(record.timestamp * 1000),
-    latitude: record.latitude / 10000000,
-    longitude: record.longitude / 10000000,
-    angle: record.angle / 100,
-    ignition: record.io['5'] === 1 || 0,
-    totalDistance: record.io['29'] === 1 || 0
+    channel_id: record['channel.id'],
+    din: record.din,
+    longitude: record['position.longitude'],
+    latitude: record['position.latitude'],
+    altitude: record['position.altitude'],
+    direction: record['position.direction'],
+    satellites: record['position.satellites'],
+    speed: record['position.speed'],
+    hdop: record['position.hdop'],
+    event_id: record['event.id'],
+    acceleration_events: record['segment.acceleration.events'],
+    cornering_events: record['segment.cornering.events'],
+    extreme_braking_events: record['segment.extreme.braking.events'],
+    harsh_braking_events: record['segment.harsh.braking.events'],
 }));

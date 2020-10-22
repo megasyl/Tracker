@@ -8,8 +8,6 @@ const config = {
     password: process.env.MYSQL_PASSWORD,
 };
 
-console.log(config, config.password)
-
 if (!config.dbName || !config.user || !config.host || !config.port) {
     throw new Error('Missing variables for MySQL');
 }

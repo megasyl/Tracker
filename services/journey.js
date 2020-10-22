@@ -1,12 +1,12 @@
-const JourneyProvider = require('../../provider/mongoose/journey');
-const hydrator = require('../../hydrator/journey');
-class SocketJourneyController {
+const JourneyProvider = require('../provider/mongoose/journey');
+const hydrator = require('../hydrator/journey');
+class JourneyService {
     static async processRecords(records) {
         try {
             for (const i in records) {
                 const record = records[i];
-                if (!record.ignition) {
-                    console.log('NOT ignited, looking for non completed journey');
+                if (record.din < 8) {
+                    // NOT ignited, looking for non completed journey
                     let journey = await JourneyProvider.findLastByRecord(record);
                     if (journey && journey.records.length) {
                         journey = await hydrator(journey, record);
@@ -25,4 +25,4 @@ class SocketJourneyController {
     }
 }
 
-module.exports = SocketJourneyController;
+module.exports = JourneyService;

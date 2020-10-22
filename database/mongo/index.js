@@ -11,7 +11,7 @@ if (!config.host || !config.port) {
 }
 
 const url = `mongodb://${config.host}:${config.port}`;
-module.exports = mongoose.connect(`${url}/ruptela`, {
+module.exports = mongoose.connect(`${url}/flespi`, {
     //user: config.user,
     //pass: config.password,
     useNewUrlParser: true,
