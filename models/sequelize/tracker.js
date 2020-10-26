@@ -50,8 +50,9 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'tracker',
     });
 
-    model.associate = ({tracker, sim}) => {
-        tracker.belongsTo(sim, { foreignKey: 'sim_id', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
+    model.associate = ({tracker, sim, vehicle}) => {
+        tracker.belongsTo(sim, { foreignKey: 'simId', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
+        tracker.belongsTo(vehicle, { foreignKey: 'vehicleId', onDelete: 'SET NULL', onUpdate: 'CASCADE' });
     };
 
     return model;

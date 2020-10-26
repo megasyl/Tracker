@@ -23,7 +23,7 @@ router.put(
 );
 
 router.delete(
-    '/v1/users/:id',
+    '/v1/vehicles/:id',
     vehicleController.delete
 );
 

@@ -1,5 +1,6 @@
 const Provider = require('../../provider/mongoose/record');
 const GoogleServices = require('../../services/google');
+const vehicleProvider = require('../../provider/sequelize/vehicle');
 
 class Record {
     static async list(req, res, next) {
@@ -28,6 +29,7 @@ class Record {
                 ];
                 const address = await GoogleServices.getAddressFromLocation(location);
                 entry.record.address = address ? address.results[0]['formatted_address'] : null;
+                entry.record.vehicle = await vehicleProvider.getByImei(entry.record.imei);
                 return entry;
             }));
 

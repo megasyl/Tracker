@@ -1,10 +1,11 @@
 module.exports = (data) => data.map(record => ({
-    imei: parseInt(packet.imei),
+    imei: parseInt(record.ident),
     voltage: record['external.powersource.voltage'],
     ibutton_code: record['ibutton.code'],
     timestamp: new Date(record.timestamp * 1000),
     channel_id: record['channel.id'],
     din: record.din,
+    ignition: record.din >= 8,
     longitude: record['position.longitude'],
     latitude: record['position.latitude'],
     altitude: record['position.altitude'],

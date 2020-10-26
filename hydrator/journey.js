@@ -23,7 +23,8 @@ module.exports = async (journey, record) => {
         }
     }
     if (journey.distance < 0.1) return null;
-    journey.interpolatedPoints = await GoogleService.findPlausibleRouteFromLocations(snappedPoints.map(point => [point.location.latitude, point.location.longitude]));
+    //journey.interpolatedPoints = await GoogleService.findPlausibleRouteFromLocations(snappedPoints.map(point => [point.location.latitude, point.location.longitude]));
+    journey.interpolatedPoints = await GoogleService.findPlausibleRouteFromLocations(journey.records.map(record => [record.latitude, record.longitude]));
 
     const [beginAddress, endAddress] = await Promise.all([
         GoogleService.getAddressFromLocation([journey.records[0].latitude, journey.records[0].longitude]),

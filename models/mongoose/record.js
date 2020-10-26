@@ -16,6 +16,10 @@ module.exports = mongoose.model('Record', new mongoose.Schema({
         type: Number,
         index: true
     },
+    ignition: {
+        type: Boolean,
+        index: true
+    },
     longitude: Number,
     latitude: Number,
     altitude: Number,
