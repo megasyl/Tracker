@@ -14,7 +14,7 @@ class Stream {
             await RecordProvider.bulkInsert(recordsData);
             const record = recordsData[recordsData.length - 1];
 
-            const address = await GoogleServices.getAddressFromLocation(location);
+            const address = await GoogleServices.getAddressFromLocation([record.latitude, record.longitude]);
             broadcast(websocketServer, {
                 ...record,
                 vehicle: await vehicleProvider.getByImei(record.imei),
